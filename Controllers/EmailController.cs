@@ -20,55 +20,68 @@ namespace SenderApp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Email> Get()
+        public IActionResult Get()
         {
-            var news = _emailService.GetAll();
-            return news;
+            var emails = _emailService.GetAll();
+            return Ok(emails);
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Email> GetById(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var news = await _emailService.FindAsync(id);
-            return news;
+            var email = await _emailService.FindAsync(id);
+            return Ok(email);
         }
 
         [HttpDelete]
-        public async Task Delete([FromBody] Email news)
+        public async Task<IActionResult> Delete([FromBody] Email email)
         {
-            await _emailService.DeleteAsync(news);
+            await _emailService.DeleteAsync(email);
+            return Ok();
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task DeleteById(Guid id)
+        public async Task<IActionResult> DeleteById(Guid id)
         {
             await _emailService.DeleteAsync(id);
+            return Ok();
         }
 
         [HttpPost]
-        public async Task Add([FromBody] Email news)
+        public async Task<IActionResult> Add([FromBody] Email news)
         {
             await _emailService.AddAsync(news);
+            return Ok();
+
         }
 
         [HttpPut]
-        public async Task Update([FromBody] Email news)
+        public async Task<IActionResult> Update([FromBody] Email news)
         {
             await _emailService.UpdateAsync(news);
+            return Ok();
         }
 
         [HttpGet]
-        public async Task Start([FromBody] Email news)
+        [Route("start")]
+        public async Task<IActionResult> Start()
         {
-            await _emailService.StartAsync(news);
+            var result = await _emailService.StartAsync();
+            if (result != true)
+                return BadRequest();
+            return Ok();
         }
 
         [HttpGet]
-        public async Task Stop([FromBody] Email news)
+        [Route("stop")]
+        public async Task<IActionResult> Stop()
         {
-            await _emailService.StopAsync(news);
+            var result = await _emailService.StopAsync();
+            if (result != true)
+                return BadRequest();
+            return Ok();
         }
     }
 }

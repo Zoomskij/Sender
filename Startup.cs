@@ -44,7 +44,8 @@ namespace SenderApp
             services.AddScoped<DbContext>();
             services.AddScoped(typeof(ICommonService<>), typeof(CommonService<>));
             services.AddScoped<IEmailService, EmailService>();
-            //TODO
+            services.AddScoped<IConfigService, ConfigService>();
+  
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
         }
@@ -71,7 +72,17 @@ namespace SenderApp
                 options.RoutePrefix = string.Empty;
             });
 
+            app.UseSwagger(options =>
+            {
+                options.SerializeAsV2 = true;
+            });
 
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

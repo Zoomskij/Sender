@@ -6,10 +6,8 @@ using SenderApp.Models;
 
 namespace SenderApp.Services.Interfaces
 {
-    public interface IEmailService : ICommonService<Email>
+    public interface IConfigService : ICommonService<Config>
     {
-        Task<bool> StartAsync();
 
-        Task<bool> StopAsync();
     }
 }

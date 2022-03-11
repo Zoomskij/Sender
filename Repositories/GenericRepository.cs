@@ -63,7 +63,7 @@ namespace SenderApp.Repositories
 
         public virtual async Task UpdateAsync(T entity)
         {
-            var existing = await _dbSet.FindAsync(entity.Id);
+            var existing = _dbSet.Find(entity.Id);
             if (existing != null)
             {
                 _context.Entry(existing).CurrentValues.SetValues(entity);

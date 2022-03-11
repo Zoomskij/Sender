@@ -13,7 +13,8 @@ namespace SenderApp.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder
                 .UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
-        public DbSet<Email> News { get; set; }
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<Config> Configs { get; set; }
         public Context(DbContextOptions<Context> options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
@@ -31,16 +32,22 @@ namespace SenderApp.Data
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
+            ///////Seed Config////////
+            modelBuilder.Entity<Config>(entity => { entity.Property(e => e.Id).IsRequired(); });
 
-            ///////Seed News////////
-            modelBuilder.Entity<Email>(entity => { entity.Property(e => e.Id).IsRequired(); });
-            for (byte i = 1; i < 5; i++)
+            modelBuilder.Entity<Config>().HasData(new Config
             {
-                modelBuilder.Entity<Email>().HasData(new Email
-                {
-                    Name = $"Test Name {i}", 
-                });
-            }
+                IsStarted = false
+            });
+
+            ///////Seed Emails////////
+            modelBuilder.Entity<Email>(entity => { entity.Property(e => e.Id).IsRequired(); });
+
+            modelBuilder.Entity<Email>().HasData(new Email
+            {
+                Name = $"My", 
+                Address = "Zoomskij@gmail.com"
+            });
         }
     }
 }

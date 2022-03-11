@@ -4,11 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PrintLayer.Models
+namespace SenderApp.Models
 {
-    public class News : BaseEntity
+    public class Email : BaseEntity
     {
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string Address { get; set; }
+        public bool IsSended { get; set; } 
+
     }
 }

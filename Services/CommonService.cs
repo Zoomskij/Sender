@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using PrintLayer.Models;
-using PrintLayer.Repositories.Interfaces;
-using PrintLayer.Services.Interfaces;
+using SenderApp.Models;
+using SenderApp.Repositories.Interfaces;
+using SenderApp.Services.Interfaces;
 
-namespace PrintLayer.Services
+namespace SenderApp.Services
 {
     public class CommonService<T> : ICommonService<T> where T : BaseEntity
     {

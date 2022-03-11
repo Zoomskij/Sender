@@ -9,8 +9,8 @@ services:
     ports:
       - 1433:1433
 
-  printlayer:
-    image: ${DOCKER_REGISTRY-}printlayer
+  SenderApp:
+    image: ${DOCKER_REGISTRY-}SenderApp
     build:
       context: .
       dockerfile: Dockerfile

@@ -1,6 +1,6 @@
 #Print Layer Deploy
- docker build . -t printlayer 
- docker run -d -p 8080:80 printlayer
+ docker build . -t SenderApp 
+ docker run -d -p 8080:80 SenderApp
 
  #Print Layer Local
  npm install

@@ -3,24 +3,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PrintLayer.Models;
-using PrintLayer.Services;
-using PrintLayer.Services.Interfaces;
+using SenderApp.Models;
+using SenderApp.Services;
+using SenderApp.Services.Interfaces;
 
-namespace PrintLayer.Controllers
+namespace SenderApp.Controllers
 {
     [Route("[controller]")] 
     public class NewsController : Controller
     {
-        private readonly ICommonService<News> _commonService;
+        private readonly ICommonService<Email> _commonService;
 
-        public NewsController(ICommonService<News> commonService)
+        public NewsController(ICommonService<Email> commonService)
         {
             _commonService = commonService;
         }
 
         [HttpGet]
-        public IEnumerable<News> Get()
+        public IEnumerable<Email> Get()
         {
             var news = _commonService.GetAll();
             return news;
@@ -28,14 +28,14 @@ namespace PrintLayer.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<News> GetById(Guid id)
+        public async Task<Email> GetById(Guid id)
         {
             var news = await _commonService.FindAsync(id);
             return news;
         }
 
         [HttpDelete]
-        public async Task Delete([FromBody] News news)
+        public async Task Delete([FromBody] Email news)
         {
             await _commonService.DeleteAsync(news);
         }
@@ -48,13 +48,13 @@ namespace PrintLayer.Controllers
         }
 
         [HttpPost]
-        public async Task Add([FromBody] News news)
+        public async Task Add([FromBody] Email news)
         {
             await _commonService.AddAsync(news);
         }
 
         [HttpPut]
-        public async Task Update([FromBody] News news)
+        public async Task Update([FromBody] Email news)
         {
             await _commonService.UpdateAsync(news);
         }

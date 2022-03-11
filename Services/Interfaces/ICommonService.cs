@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using PrintLayer.Models;
+using SenderApp.Models;
 
-namespace PrintLayer.Services.Interfaces
+namespace SenderApp.Services.Interfaces
 {
     public interface ICommonService<T> where T : BaseEntity
     {

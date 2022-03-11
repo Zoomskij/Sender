@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using PrintLayer.Data;
-using PrintLayer.Models;
-using PrintLayer.Repositories;
-using PrintLayer.Repositories.Interfaces;
-using PrintLayer.Services;
-using PrintLayer.Services.Interfaces;
+using SenderApp.Data;
+using SenderApp.Models;
+using SenderApp.Repositories;
+using SenderApp.Repositories.Interfaces;
+using SenderApp.Services;
+using SenderApp.Services.Interfaces;
 
-namespace PrintLayer
+namespace SenderApp
 {
     public class Startup
     {
@@ -39,19 +39,10 @@ namespace PrintLayer
 
             //TODO: add services
             services.AddControllersWithViews();
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<Context>();
-
 
             services.AddScoped<DbContext>();
-            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped(typeof(ICommonService<>), typeof(CommonService<>));
-            services.AddScoped<IReviewService, ReviewService>();
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IImageService, ImageService>();
-            services.AddScoped<IVotePrintService, VotePrintService>();
-
-            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IEmailService, EmailService>();
             //TODO
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
@@ -71,6 +62,7 @@ namespace PrintLayer
             app.UseRouting();
 
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

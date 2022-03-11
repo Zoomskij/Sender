@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PrintLayer.Models
+namespace SenderApp.Models
 {
     public abstract class BaseEntity
     {

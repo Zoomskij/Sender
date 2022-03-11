@@ -1,5 +1,5 @@
 {
-  "name": "PrintLayer",
+  "name": "SenderApp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -30,13 +30,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Zoomskij/PrintLayer.git"
+    "url": "git+https://github.com/Zoomskij/SenderApp.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Zoomskij/PrintLayer/issues"
+    "url": "https://github.com/Zoomskij/SenderApp/issues"
   },
-  "homepage": "https://github.com/Zoomskij/PrintLayer#readme"
+  "homepage": "https://github.com/Zoomskij/SenderApp#readme"
 }

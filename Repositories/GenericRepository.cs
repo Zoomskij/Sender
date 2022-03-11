@@ -1,14 +1,14 @@
-﻿using PrintLayer.Models;
-using PrintLayer.Repositories.Interfaces;
+﻿using SenderApp.Models;
+using SenderApp.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PrintLayer.Data;
+using SenderApp.Data;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 
-namespace PrintLayer.Repositories
+namespace SenderApp.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {

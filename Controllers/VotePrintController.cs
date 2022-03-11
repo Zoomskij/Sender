@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PrintLayer.Models;
-using PrintLayer.Services.Interfaces;
+using SenderApp.Models;
+using SenderApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PrintLayer.Controllers
+namespace SenderApp.Controllers
 {
     [Route("[controller]")]
     public class VotePrintController : Controller
     {
-        private readonly IVotePrintService _votePrintService;
+        private readonly IEmailService _votePrintService;
 
-        public VotePrintController(IVotePrintService votePrintService)
+        public VotePrintController(IEmailService votePrintService)
         {
             _votePrintService = votePrintService;
         }

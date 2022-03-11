@@ -8,8 +8,8 @@ namespace SenderApp.Services.Interfaces
 {
     public interface IEmailService : ICommonService<Email>
     {
-        Task Start(Email entity);
+        Task StartAsync(Email entity);
 
-        Task Stop(Email entity);
+        Task StopAsync(Email entity);
     }
 }

@@ -10,19 +10,19 @@ using SenderApp.Services.Interfaces;
 namespace SenderApp.Controllers
 {
     [Route("[controller]")] 
-    public class NewsController : Controller
+    public class EmailController : Controller
     {
-        private readonly ICommonService<Email> _commonService;
+        private readonly IEmailService _emailService;
 
-        public NewsController(ICommonService<Email> commonService)
+        public EmailController(IEmailService emailService)
         {
-            _commonService = commonService;
+            _emailService = emailService;
         }
 
         [HttpGet]
         public IEnumerable<Email> Get()
         {
-            var news = _commonService.GetAll();
+            var news = _emailService.GetAll();
             return news;
         }
 
@@ -30,33 +30,45 @@ namespace SenderApp.Controllers
         [Route("{id}")]
         public async Task<Email> GetById(Guid id)
         {
-            var news = await _commonService.FindAsync(id);
+            var news = await _emailService.FindAsync(id);
             return news;
         }
 
         [HttpDelete]
         public async Task Delete([FromBody] Email news)
         {
-            await _commonService.DeleteAsync(news);
+            await _emailService.DeleteAsync(news);
         }
 
         [HttpDelete]
         [Route("{id}")]
         public async Task DeleteById(Guid id)
         {
-            await _commonService.DeleteAsync(id);
+            await _emailService.DeleteAsync(id);
         }
 
         [HttpPost]
         public async Task Add([FromBody] Email news)
         {
-            await _commonService.AddAsync(news);
+            await _emailService.AddAsync(news);
         }
 
         [HttpPut]
         public async Task Update([FromBody] Email news)
         {
-            await _commonService.UpdateAsync(news);
+            await _emailService.UpdateAsync(news);
+        }
+
+        [HttpGet]
+        public async Task Start([FromBody] Email news)
+        {
+            await _emailService.StartAsync(news);
+        }
+
+        [HttpGet]
+        public async Task Stop([FromBody] Email news)
+        {
+            await _emailService.StopAsync(news);
         }
     }
 }

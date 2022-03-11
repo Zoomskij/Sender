@@ -38,6 +38,7 @@ namespace SenderApp
                 options.UseSqlServer(connection));
 
             //TODO: add services
+            services.AddSwaggerGen();
             services.AddControllersWithViews();
 
             services.AddScoped<DbContext>();
@@ -61,15 +62,16 @@ namespace SenderApp
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
-
-            app.UseEndpoints(endpoints =>
+            app.UseSwaggerUI(options =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                options.RoutePrefix = string.Empty;
             });
+
+
         }
     }
 }

@@ -17,14 +17,14 @@ namespace SenderApp.Services
             _repository = repository;
         }
 
-        public virtual async Task Start(Email entity)
+        public virtual async Task StartAsync(Email entity)
         {
             if (entity == null) return;
             await _repository.UpdateAsync(entity);
             await _repository.SaveChangesAsync();
         }
 
-        public virtual async Task Stop(Email entity)
+        public virtual async Task StopAsync(Email entity)
         {
             if (entity == null) return;
             await _repository.UpdateAsync(entity);
